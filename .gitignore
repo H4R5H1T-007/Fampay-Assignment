@@ -1,5 +1,7 @@
 cred.json
 django-fampay/
+db.sqlite3
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -47,6 +49,7 @@ coverage.xml
 # Django stuff:
 *.log
 *.pot
+migrations/
 
 # Sphinx documentation
 docs/_build/

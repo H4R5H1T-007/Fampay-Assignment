@@ -34,7 +34,7 @@ def youtube_search(options):
             temp = dict()
             for req in required:
                 temp[req] = search_result['snippet'][req]
-            temp['thumbnail'] = search_result['snippet']['thumbnails']['high']['url']
+            temp['thumbnail'] = search_result['snippet']['thumbnails']['default']['url']
             temp["video_url"] = "".join(['https://www.youtube.com/watch?v=', search_result['id']['videoId']])
             videos[search_result['id']['videoId']] = temp
     
