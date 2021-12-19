@@ -1,16 +1,17 @@
 # from django.http import request
+from django.core import paginator
 from django.shortcuts import redirect, render
 import threading
 import time
+from django.core.paginator import Paginator
 from .fetch import youtube_search
 from .models import Youtube_data
-from asgiref.sync import sync_to_async
 
 # @sync_to_async(thread_sensitive=False)
 def fetch_data():
     temp = youtube_search({
-        'query':'code',
-        'max_result':25,
+        'query':'football',
+        'max_result':40,
     })
     for keys, items in temp.items():
         if(not Youtube_data.objects.filter(id=keys).exists()):
@@ -32,11 +33,17 @@ def run_func(func):
 def fetch(request):
     t = threading.Thread(target=run_func, kwargs={'func':fetch_data}, daemon=True)
     t.start()
+    time.sleep(0.5)
     return redirect('home-page')
 
 def home(request):
-    # fetch()
+    all_data = Youtube_data.objects.all().order_by('-date_posted')
+    paginator = Paginator(all_data, 10)
+    pg_no = request.GET.get('page')
+    page_obj = paginator.get_page(pg_no)
     context = {
-        "posts" : Youtube_data.objects.all(),
+        "posts" : page_obj,
+        "page_obj":page_obj,
+        "is_paginated":True,
     }
     return render(request, 'main/home.html', context=context)
