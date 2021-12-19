@@ -12,9 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import json
-import os
 
-with open(os.path.abspath("cred.json")) as cred:
+with open("cred.json") as cred:
     keys = json.load(cred)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.

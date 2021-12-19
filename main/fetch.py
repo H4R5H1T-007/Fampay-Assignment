@@ -1,9 +1,8 @@
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 import json
-import os
 
-with open(os.path.join('/home/harshit/Desktop/Django/fampay', 'cred.json')) as cred:
+with open('cred.json') as cred:
     key = json.load(cred)
 
 DEVELOPER_KEY = key['API_KEY']
