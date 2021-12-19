@@ -1,6 +1,7 @@
 cred.json
 django-fampay/
 db.sqlite3
+temp.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
