@@ -5,7 +5,7 @@
 
 > Note :- You need to create a cred.json file which contains </br>
 > 1. API_KEY generated from google cloud platform.</br>
->    (Don't generate Oauth2 id. Just generate the API Key)</br>
+>    (Don't generate Oauth2 id. Just generate the API Key for more info click [here.](https://developers.google.com/youtube/v3/getting-started))</br>
 > 2. SECRET_KEY for Django settings.py</br>
 > 3. Postgresql Password</br>
 > You need to put this file along with manage.py file
