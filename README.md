@@ -6,19 +6,24 @@
 > Note :- You need to create a cred.json file which contains </br>
 > 1. API_KEY generated from google cloud platform.</br>
 >    (Don't generate Oauth2 id. Just generate the API Key for more info click [here.](https://developers.google.com/youtube/v3/getting-started))</br>
-> 2. SECRET_KEY for Django settings.py</br>
-> 3. Postgresql Password</br>
+> 2. SECRET_KEY for Django settings.py.</br>
+> 3. SQL_PASS Postgresql Password.</br> ie.</br>
+>{</br>
+> "API_KEY":"abc",</br>
+> "SECRET_KEY":"def",</br>
+> "SQL_PASS":"ghi"</br>
+>}</br>
 > You need to put this file along with manage.py file
 
 - Setup virtual enviroment
 ```
-    pip3 install virtualenv 
-    virtualenv venv
-    source venv/bin/activate
+pip3 install virtualenv 
+virtualenv venv
+source venv/bin/activate
 ```
 - Install dependencies
 ```
-    pip3 install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 > Note :- You need to create a database in Postgresql before running the server.</br>
@@ -27,18 +32,19 @@
 - Starting the server
     - When starting it for first time, run the following command.
 ```
-  python3 manage.py migrate
+python3 manage.py makemigrations main
+python3 manage.py migrate main
 ```
 - Now run
 ```
-    python3 manage.py runserver
+python3 manage.py runserver
 ```
 - Copy and paste this address in your browser
 ```
-  http://127.0.0.1:8000/fetch-api-from-youtube/
+http://127.0.0.1:8000/fetch-api-from-youtube/
 ``` 
 This route `fetch-api-from-youtube` is to trigger async data fetch from youtube api in interval of 10 seconds.</br>
-After Triggering, this route will redirect you to main home route where videos are listed in Paginated form.</br>
+After Triggering, this route will redirect you to main home route where videos are listed in Paginated form along with a Sort-By Drop Down menu to specify Sort-By option.</br>
 Here I have choosen `query` as `football` and `max_results` as `40`.
 
 ## Techstack used:-
