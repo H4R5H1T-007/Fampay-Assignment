@@ -1,5 +1,5 @@
 cred.json
-django-fampay/
+venv/
 db.sqlite3
 temp.json
 
@@ -51,6 +51,7 @@ coverage.xml
 *.log
 *.pot
 migrations/
+main/__pycache__
 
 # Sphinx documentation
 docs/_build/

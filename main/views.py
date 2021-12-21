@@ -39,7 +39,7 @@ def fetch(request):
     return redirect('home-page')
 
 def home(request):
-    all_data = Youtube_data.objects.all().order_by('-date_posted')
+    all_data = Youtube_data.objects.all().order_by(request.GET.get('sort', '-date_posted'))
     paginator = Paginator(all_data, 10)
     pg_no = request.GET.get('page')
     page_obj = paginator.get_page(pg_no)
@@ -47,5 +47,6 @@ def home(request):
         "posts" : page_obj,
         "page_obj":page_obj,
         "is_paginated":True,
+        "sort_value":request.GET.get('sort', '-date_posted')
     }
     return render(request, 'main/home.html', context=context)

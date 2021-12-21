@@ -19,14 +19,17 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
-                <!-- <div class="navbar-nav">
+                <form method="get">
+                <div class="navbar-nav">
                   <select name="sort">
                     <option value="Default" selected disabled hidden>Sort-By</option>
-                    {% for option in options %}
-                      <option value="{{ option }}">{{ option }}</option>
-                    {% endfor %}
+                    <option value="title">Title</option>
+                    <option value="-date_posted">Time</option>
+                    <option value="channel_title">Channel Title</option>
                   </select>
-                </div> -->
+                  <button type="submit">Go</button>
+                </div>
+                </form>
               </div>
             </nav>
         </header>
