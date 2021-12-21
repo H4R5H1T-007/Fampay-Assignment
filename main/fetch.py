@@ -1,6 +1,7 @@
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 import json
+import datetime
 
 with open('cred.json') as cred:
     key = json.load(cred)
@@ -24,18 +25,22 @@ def youtube_search(options):
         part='id,snippet',
         maxResults=options['max_result'],
         order='date',
+        type="video",
     ).execute()
 
     videos = dict()
 
     for search_result in search_response.get('items', []):
-        if search_result['id']['kind'] == 'youtube#video':
-            temp = dict()
-            for req in required:
-                temp[req] = search_result['snippet'][req]
-            temp['thumbnail'] = search_result['snippet']['thumbnails']['default']['url']
-            temp["video_url"] = "".join(['https://www.youtube.com/watch?v=', search_result['id']['videoId']])
-            videos[search_result['id']['videoId']] = temp
+        # if search_result['id']['kind'] == 'youtube#video':
+        temp = dict()
+        for req in required:
+            temp[req] = search_result['snippet'][req]
+        temp['thumbnail'] = search_result['snippet']['thumbnails']['default']['url']
+        temp["video_url"] = "".join(['https://www.youtube.com/watch?v=', search_result['id']['videoId']])
+        temp["channel_url"] = "".join(['https://www.youtube.com/channel/', search_result['snippet']['channelId']])
+        temp["channelTitle"] = search_result['snippet']['channelTitle']
+        temp['isLive'] = True if search_result['snippet']['liveBroadcastContent'] == 'live' else False
+        videos[search_result['id']['videoId']] = temp
     
     return videos
 

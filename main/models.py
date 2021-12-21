@@ -8,4 +8,6 @@ class Youtube_data(models.Model):
     date_posted = models.DateTimeField()
     thumbnail = models.URLField(max_length=200)
     video_url = models.URLField(max_length=200)
-
+    channel_title = models.CharField(max_length=100, )
+    channel_url = models.URLField(max_length=200)
+    is_live = models.BooleanField()

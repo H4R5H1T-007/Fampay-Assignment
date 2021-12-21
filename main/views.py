@@ -22,6 +22,9 @@ def fetch_data():
                 date_posted = items['publishedAt'],
                 thumbnail = items['thumbnail'],
                 video_url = items['video_url'],
+                channel_title = items['channelTitle'],
+                is_live = items['isLive'],
+                channel_url = items['channel_url'],
             )
             mod.save()
 
@@ -33,7 +36,6 @@ def run_func(func):
 def fetch(request):
     t = threading.Thread(target=run_func, kwargs={'func':fetch_data}, daemon=True)
     t.start()
-    time.sleep(0.5)
     return redirect('home-page')
 
 def home(request):

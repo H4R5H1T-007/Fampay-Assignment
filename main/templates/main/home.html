@@ -4,8 +4,9 @@
     <article class="media content-section">
       <img class="article-image" src="{{ post.thumbnail }}">
       <div class="media-body">
-          <h4><a class="atricle-title" href="{{ post.video_url }}">{{ post.title }}</a></h2>
+          <h4><a class="article-title" href="{{ post.video_url }}">{{ post.title }}</a></h2>
           <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+          <small class="text-muted">Posted By <a href="{{ post.channel_url }}">{{ post.channel_title }}</a></small>
           <p class="article-content">{{ post.description }}</p>
       </div>
     </article>

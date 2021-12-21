@@ -15,10 +15,18 @@
         <header class="site-header">
             <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
               <div class="container">
-                <a class="navbar-brand mr-4" href="#">Youtube Videos</a>
+                <a class="navbar-brand mr-4" href="{% url 'home-page' %}">Youtube Videos</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
+                <!-- <div class="navbar-nav">
+                  <select name="sort">
+                    <option value="Default" selected disabled hidden>Sort-By</option>
+                    {% for option in options %}
+                      <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                  </select>
+                </div> -->
               </div>
             </nav>
         </header>
