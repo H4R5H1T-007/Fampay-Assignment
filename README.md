@@ -54,6 +54,6 @@ Here I have choosen `query` as `football` and `max_results` as `40`.
 - Also added filter and sort-by option on right side of nav bar.
 
 ## Techstack used:-
-> Django </br>
-> Postgresql </br>
-> Google client library
+- Django </br>
+- Postgresql </br>
+- Google client library
