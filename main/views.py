@@ -1,9 +1,9 @@
 # from django.http import request
-from django.core import paginator
 from django.shortcuts import redirect, render
+from django.core.paginator import Paginator
+from django.db.models import Q
 import threading
 import time
-from django.core.paginator import Paginator
 from .fetch import youtube_search
 from .models import Youtube_data
 
@@ -13,6 +13,7 @@ def fetch_data():
         'query':'football',
         'max_result':40,
     })
+
     for keys, items in temp.items():
         if(not Youtube_data.objects.filter(id=keys).exists()):
             mod = Youtube_data(
@@ -40,13 +41,25 @@ def fetch(request):
 
 def home(request):
     all_data = Youtube_data.objects.all().order_by(request.GET.get('sort', '-date_posted'))
+
+    filter_query = request.GET.get("filter", '')
+    if filter_query != "":
+        filter_query = [
+            Q(title__icontains=query) | Q(channel_title__icontains=query) | Q(description__icontains=query)
+            for query in filter_query.split()]
+        query = filter_query.pop()
+        for q in filter_query:
+            query |= q
+        all_data = all_data.filter(query)
+
     paginator = Paginator(all_data, 10)
     pg_no = request.GET.get('page')
     page_obj = paginator.get_page(pg_no)
+
     context = {
         "posts" : page_obj,
         "page_obj":page_obj,
-        "is_paginated":True,
-        "sort_value":request.GET.get('sort', '-date_posted')
+        "sort_value":request.GET.get('sort', '-date_posted'),
+        "filter":request.GET.get('filter', ""),
     }
     return render(request, 'main/home.html', context=context)

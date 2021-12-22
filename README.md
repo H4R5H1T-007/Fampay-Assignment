@@ -1,7 +1,7 @@
 ## Steps to run this project:-
 - You make sure you have Postgresql installed and working properly.
 - Clone this repo.
-- Navigate to Github-Extenship-Assignment-Fampay/
+- Navigate to this repo folder in terminal
 
 > Note :- You need to create a cred.json file which contains </br>
 > 1. API_KEY generated from google cloud platform.</br>
@@ -44,8 +44,14 @@ python3 manage.py runserver
 http://127.0.0.1:8000/fetch-api-from-youtube/
 ``` 
 This route `fetch-api-from-youtube` is to trigger async data fetch from youtube api in interval of 10 seconds.</br>
-After Triggering, this route will redirect you to main home route where videos are listed in Paginated form along with a Sort-By Drop Down menu to specify Sort-By option.</br>
+After Triggering, this route will redirect you to main home route where videos are listed in Paginated form along with a Sort-By Drop Down menu to specify Sort-By option and Filter-By search bar.</br>
 Here I have choosen `query` as `football` and `max_results` as `40`.
+
+## Functionalities implemented :-
+- Fetching data from Youtube API.
+- Adding it to Database and recall api after every 10 seconds asynchronously.
+- Created a Dashboard where you can see all of the videos in paginated form.
+- Also added filter and sort-by option on right side of nav bar.
 
 ## Techstack used:-
 > Django </br>

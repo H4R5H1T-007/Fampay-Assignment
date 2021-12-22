@@ -11,21 +11,21 @@
     </article>
     {% endfor %}
     {% if page_obj.has_previous %}
-      <a class="btn btn-outline-info mb-4" href="?page=1&&sort={{ sort_value }}">First</a>
-      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}&&sort={{ sort_value }}">Previous</a>
+      <a class="btn btn-outline-info mb-4" href="?page=1&&sort={{ sort_value }}&&filter={{ filter }}">First</a>
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}&&sort={{ sort_value }}&&filter={{ filter }}">Previous</a>
     {% endif %}
 
     {% for num in page_obj.paginator.page_range %}
       {% if page_obj.number == num %}
-        <a class="btn btn-info mb-4" href="?page={{ num }}&&sort={{ sort_value }}">{{ num }}</a>
+        <a class="btn btn-info mb-4" href="?page={{ num }}&&sort={{ sort_value }}&&filter={{ filter }}">{{ num }}</a>
       {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3'%}
-        <a class="btn btn-outline-info mb-4" href="?page={{ num }}&&sort={{ sort_value }}">{{ num }}</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ num }}&&sort={{ sort_value }}&&filter={{ filter }}">{{ num }}</a>
       {% endif %}
     {% endfor %}
 
     {% if page_obj.has_next %}
-      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}&&sort={{ sort_value }}">Next</a>
-      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}&&sort={{ sort_value }}">Last</a>
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}&&sort={{ sort_value }}&&filter={{ filter }}">Next</a>
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}&&sort={{ sort_value }}&&filter={{ filter }}">Last</a>
     {% endif %}
 
 {% endblock content %}
