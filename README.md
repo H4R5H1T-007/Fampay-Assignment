@@ -4,6 +4,9 @@
 - Created a Dashboard where you can see all of the videos in paginated form.
 - Also added filter and sort-by option on right side of nav bar.
 
+## Demo:-
+![Project-Demo](Demo.gif)
+
 ## Techstack used:-
 - Django </br>
 - Postgresql </br>
