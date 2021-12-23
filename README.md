@@ -1,6 +1,6 @@
 ## Functionalities implemented :-
 - Fetching data from Youtube API.
-- Adding it to Database and recall api after every 10 seconds asynchronously.
+- Adding it to Database and recall api after every 600 seconds asynchronously.
 - Created a Dashboard where you can see all of the videos in paginated form.
 - Also added filter and sort-by option on right side of nav bar.
 
@@ -19,6 +19,8 @@
 >    (Don't generate Oauth2 id. Just generate the API Key for more info click [here.](https://developers.google.com/youtube/v3/getting-started))</br>
 > 2. SECRET_KEY for Django settings.py.</br>
 > 3. SQL_PASS Postgresql Password.</br> ie.</br>
+
+> Note :- I have commented out some parts of `DATABASE` in settings.py for deployment purposes so to run it locally setup it accordingly
 
 - Setup virtual enviroment
 ```

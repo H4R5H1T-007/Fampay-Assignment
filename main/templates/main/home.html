@@ -1,6 +1,7 @@
 {% extends "main/base.html" %}
 {% block content %}
-    {% for post in posts%}
+    {% if posts %}
+    {% for post in posts %}
     <article class="media content-section">
       <img class="article-image" src="{{ post.thumbnail }}">
       <div class="media-body">
@@ -29,4 +30,5 @@
       <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}&&sort={{ sort_value }}&&filter={{ filter }}">Last</a>
     {% endif %}
     </div>
+    {% endif %}
 {% endblock content %}

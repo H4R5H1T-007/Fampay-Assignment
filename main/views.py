@@ -15,24 +15,23 @@ def fetch_data():
     })
 
     for keys, items in temp.items():
-        if(not Youtube_data.objects.filter(id=keys).exists()):
-            mod = Youtube_data(
-                id = keys,
-                title = items['title'],
-                description = items['description'],
-                date_posted = items['publishedAt'],
-                thumbnail = items['thumbnail'],
-                video_url = items['video_url'],
-                channel_title = items['channelTitle'],
-                is_live = items['isLive'],
-                channel_url = items['channel_url'],
-            )
-            mod.save()
+        mod = Youtube_data(
+            id = keys,
+            title = items['title'],
+            description = items['description'],
+            date_posted = items['publishedAt'],
+            thumbnail = items['thumbnail'],
+            video_url = items['video_url'],
+            channel_title = items['channelTitle'],
+            is_live = items['isLive'],
+            channel_url = items['channel_url'],
+        )
+        mod.save()
 
 def run_func(func):
     while(True):
         func()
-        time.sleep(10)
+        time.sleep(600)
 
 def fetch(request):
     t = threading.Thread(target=run_func, kwargs={'func':fetch_data}, daemon=True)

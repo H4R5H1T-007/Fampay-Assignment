@@ -50,7 +50,6 @@ coverage.xml
 # Django stuff:
 *.log
 *.pot
-migrations/
 main/__pycache__
 
 # Sphinx documentation
