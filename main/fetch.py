@@ -1,12 +1,8 @@
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-import json
-import datetime
+import os
 
-with open('cred.json') as cred:
-    key = json.load(cred)
-
-DEVELOPER_KEY = key['API_KEY']
+DEVELOPER_KEY = os.environ.get('API_KEY')
 YOUTUBE_API_SERVICE_NAME = 'youtube'
 YOUTUBE_API_VERSION = 'v3'
 

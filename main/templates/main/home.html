@@ -10,6 +10,7 @@
       </div>
     </article>
     {% endfor %}
+    <div>
     {% if page_obj.has_previous %}
       <a class="btn btn-outline-info mb-4" href="?page=1&&sort={{ sort_value }}&&filter={{ filter }}">First</a>
       <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}&&sort={{ sort_value }}&&filter={{ filter }}">Previous</a>
@@ -27,5 +28,5 @@
       <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}&&sort={{ sort_value }}&&filter={{ filter }}">Next</a>
       <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}&&sort={{ sort_value }}&&filter={{ filter }}">Last</a>
     {% endif %}
-
+    </div>
 {% endblock content %}
